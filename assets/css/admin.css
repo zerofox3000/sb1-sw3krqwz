@@ -1,0 +1,172 @@
+/**
+ * Stratos Pay Admin Styles - Dark Mode
+ */
+
+/* Global Styles */
+:root {
+    --stratos-dark: #0f172a;
+    --stratos-darker: #1e293b;
+    --stratos-teal: #0ff;
+    --stratos-blue: #00b4d8;
+    --stratos-text: #e2e8f0;
+    --stratos-text-muted: #94a3b8;
+    --stratos-gradient-start: rgba(0, 180, 216, 0.1);
+    --stratos-gradient-end: rgba(0, 255, 255, 0.1);
+    --stratos-border: rgba(255, 255, 255, 0.1);
+}
+
+.stratos-pay-wrap {
+    background: var(--stratos-dark);
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem;
+}
+
+.stratos-pay-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.stratos-pay-title {
+    color: var(--stratos-text);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--stratos-teal), var(--stratos-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stratos-pay-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stratos-pay-box {
+    background: linear-gradient(135deg, var(--stratos-gradient-start), var(--stratos-gradient-end));
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--stratos-border);
+    border-radius: 1rem;
+    padding: 2rem;
+    color: var(--stratos-text);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stratos-pay-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.stratos-pay-box h2 {
+    color: var(--stratos-teal);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.stratos-pay-box p {
+    color: var(--stratos-text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.stratos-pay-form-row {
+    margin-bottom: 1.5rem;
+}
+
+.stratos-pay-form-row label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--stratos-text);
+    font-weight: 500;
+}
+
+.stratos-pay-form-row input[type="text"],
+.stratos-pay-form-row input[type="password"],
+.stratos-pay-form-row select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--stratos-border);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--stratos-text);
+    transition: all 0.3s ease;
+}
+
+.stratos-pay-form-row input[type="text"]:focus,
+.stratos-pay-form-row input[type="password"]:focus,
+.stratos-pay-form-row select:focus {
+    outline: none;
+    border-color: var(--stratos-blue);
+    box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.2);
+}
+
+.stratos-pay-button {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--stratos-blue), var(--stratos-teal));
+    color: var(--stratos-dark);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stratos-pay-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 180, 216, 0.3);
+    color: var(--stratos-dark);
+}
+
+.stratos-pay-support-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.stratos-pay-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stratos-pay-list li {
+    color: var(--stratos-text-muted);
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.stratos-pay-list li::before {
+    content: "•";
+    color: var(--stratos-teal);
+    position: absolute;
+    left: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .stratos-pay-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .stratos-pay-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stratos-pay-container {
+        padding: 1rem;
+    }
+    
+    .stratos-pay-title {
+        font-size: 2rem;
+    }
+}
