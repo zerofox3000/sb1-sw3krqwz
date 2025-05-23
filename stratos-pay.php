@@ -3,7 +3,7 @@
  * Plugin Name: Stratos Pay
  * Plugin URI: https://stratospay.com/
  * Description: Accept payments and manage transactions with Stratos Pay merchant services.
- * Version: 1.0.9
+ * Version: 1.0.10
  * Author: Stratos Pay
  * Author URI: https://stratospay.com/
  * Text Domain: stratos-pay
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('STRATOS_PAY_VERSION', '1.0.9');
+define('STRATOS_PAY_VERSION', '1.0.10');
 define('STRATOS_PAY_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('STRATOS_PAY_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('STRATOS_PAY_PLUGIN_BASENAME', plugin_basename(__FILE__));

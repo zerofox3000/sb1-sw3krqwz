@@ -1,50 +1,64 @@
 (function($) {
     'use strict';
 
-    // Initialize Stratos Pay widget
-    function initStratosPayWidget() {
-        if (typeof justwallet === 'undefined') {
-            console.error('Stratos Pay widget not loaded');
-            return;
-        }
+    // Initialize Stratos Pay checkout
+    function initStratosPayCheckout() {
+        // Handle form submission
+        $('form.woocommerce-checkout').on('submit', function(e) {
+            if ($('#payment_method_stratos_pay').is(':checked')) {
+                e.preventDefault();
+                
+                const $form = $(this);
+                const $errors = $('.woocommerce-error');
+                
+                $form.block({
+                    message: null,
+                    overlayCSS: {
+                        background: '#fff',
+                        opacity: 0.6
+                    }
+                });
 
-        const order = wc_stratos_pay_params;
-        
-        const widgetParams = {
-            public_key: order.public_key,
-            transaction_reference: 'order_' + Math.floor(Math.random() * 1000000000 + 1),
-            amount: order.total * 100, // Convert to cents
-            currency: order.currency,
-            email: order.billing_email,
-            first_name: order.billing_first_name,
-            last_name: order.billing_last_name,
-            country: order.billing_country,
-            state: order.billing_state,
-            city: order.billing_city,
-            zip_code: order.billing_postcode,
-            address: order.billing_address_1,
-            return_url: order.return_url,
-            customization: {
-                title: order.store_name,
-                description: 'Order #' + order.order_id,
-                logo: order.store_logo
+                $errors.remove();
+
+                // Submit form via AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: wc_checkout_params.checkout_url,
+                    data: $form.serialize(),
+                    dataType: 'json',
+                    success: function(result) {
+                        if (result.result === 'success' && result.stratos_pay_params) {
+                            // Initialize popup
+                            try {
+                                checkout.init(result.stratos_pay_params);
+                            } catch (error) {
+                                console.error('Stratos Pay initialization error:', error);
+                                $form.prepend('<div class="woocommerce-error">Unable to initialize payment. Please try again.</div>');
+                                $form.unblock();
+                            }
+                        } else {
+                            if (result.messages) {
+                                $form.prepend(result.messages);
+                            } else {
+                                $form.prepend('<div class="woocommerce-error">An error occurred. Please try again.</div>');
+                            }
+                            $form.unblock();
+                        }
+                    },
+                    error: function(xhr, textStatus, error) {
+                        console.error('Checkout error:', error);
+                        $form.prepend('<div class="woocommerce-error">An error occurred. Please try again.</div>');
+                        $form.unblock();
+                    }
+                });
             }
-        };
-
-        justwallet.init(widgetParams);
+        });
     }
 
     // Initialize on document ready
     $(document).ready(function() {
-        if ($('#stratos-pay-payment-widget').length) {
-            initStratosPayWidget();
-        }
-
-        // Add payment option button handler
-        $('.stratos-pay-payment-button').on('click', function(e) {
-            e.preventDefault();
-            initStratosPayWidget();
-        });
+        initStratosPayCheckout();
     });
 
 })(jQuery);
