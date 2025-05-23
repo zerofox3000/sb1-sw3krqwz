@@ -74,6 +74,97 @@
     line-height: 1.6;
 }
 
+/* Features List */
+.stratos-pay-features {
+    margin: 1.5rem 0;
+}
+
+.stratos-pay-feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    color: var(--stratos-text-muted);
+}
+
+.stratos-pay-feature .dashicons {
+    color: var(--stratos-teal);
+    margin-right: 0.5rem;
+}
+
+/* Setup Steps */
+.stratos-pay-setup-steps {
+    margin: 1.5rem 0;
+}
+
+.stratos-pay-step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: var(--stratos-text-muted);
+}
+
+.step-number {
+    background: var(--stratos-blue);
+    color: var(--stratos-dark);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+/* Support Links */
+.stratos-pay-support-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.stratos-pay-support-link {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--stratos-text);
+    transition: background 0.2s ease;
+}
+
+.stratos-pay-support-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--stratos-text);
+}
+
+.stratos-pay-support-link .dashicons {
+    color: var(--stratos-teal);
+    font-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
+}
+
+.support-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.support-text strong {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.support-text small {
+    color: var(--stratos-text-muted);
+    font-size: 0.875rem;
+}
+
+/* Form Styles */
 .stratos-pay-form-row {
     margin-bottom: 1.5rem;
 }
@@ -82,7 +173,6 @@
     display: block;
     margin-bottom: 0.5rem;
     color: var(--stratos-text);
-    font-weight: 500;
 }
 
 .stratos-pay-form-row input[type="text"],
@@ -94,7 +184,7 @@
     border: 1px solid var(--stratos-border);
     background: rgba(255, 255, 255, 0.05);
     color: var(--stratos-text);
-    transition: all 0.3s ease;
+    margin-top: 0.25rem;
 }
 
 .stratos-pay-form-row input[type="text"]:focus,
@@ -124,32 +214,6 @@
     color: var(--stratos-dark);
 }
 
-.stratos-pay-support-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.stratos-pay-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.stratos-pay-list li {
-    color: var(--stratos-text-muted);
-    padding: 0.5rem 0;
-    position: relative;
-    padding-left: 1.5rem;
-}
-
-.stratos-pay-list li::before {
-    content: "•";
-    color: var(--stratos-teal);
-    position: absolute;
-    left: 0;
-}
-
 /* Responsive Design */
 @media (max-width: 1024px) {
     .stratos-pay-grid {
@@ -169,4 +233,67 @@
     .stratos-pay-title {
         font-size: 2rem;
     }
+    
+    .stratos-pay-box {
+        padding: 1.5rem;
+    }
+}
+
+/* Table Styles */
+.wp-list-table {
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 1rem !important;
+    background: transparent;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+
+.wp-list-table th {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--stratos-text);
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wp-list-table td {
+    color: var(--stratos-text-muted);
+    padding: 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.wp-list-table tr:last-child td {
+    border-bottom: none;
+}
+
+.wp-list-table tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.wp-list-table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Status Indicators */
+.stratos-pay-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.stratos-pay-status-completed {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+}
+
+.stratos-pay-status-pending {
+    background: rgba(234, 179, 8, 0.2);
+    color: #facc15;
+}
+
+.stratos-pay-status-failed {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
 }
